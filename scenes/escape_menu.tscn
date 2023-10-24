@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbvlqa001mvt7"]
+
+[ext_resource type="Script" path="res://scripts/escape_menu.gd" id="1_5xg8r"]
+[ext_resource type="Shader" path="res://shader/escape_menu.gdshader" id="1_qgd18"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqwou"]
+shader = ExtResource("1_qgd18")
+shader_parameter/amount = 3.0
+
+[node name="EscapeMenu" type="Control"]
+material = SubResource("ShaderMaterial_uqwou")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -839.0
+offset_bottom = -527.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5xg8r")
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 310.0
+offset_bottom = 55.0
+text = "RESUME"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 66.0
+offset_right = 314.0
+offset_bottom = 118.0
+text = "SPIEL BEENDEN"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

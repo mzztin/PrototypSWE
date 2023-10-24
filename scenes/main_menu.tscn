@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba5o770vecwnt"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_bhkna"]
+
+[sub_resource type="GDScript" id="GDScript_bnvsc"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_iga1u"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_s5ovt"]
+script/source = "extends Button
+
+func _pressed():
+	get_tree().quit()
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhkna")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 380.0
+offset_top = 73.0
+offset_right = 829.0
+offset_bottom = 230.0
+text = "NEUES SPIEL"
+script = SubResource("GDScript_bnvsc")
+
+[node name="LoadGameButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 377.0
+offset_top = 250.0
+offset_right = 830.0
+offset_bottom = 402.0
+text = "LETZTES SPIEL LADEN"
+script = SubResource("GDScript_iga1u")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 377.0
+offset_top = 429.0
+offset_right = 828.0
+offset_bottom = 620.0
+text = "VERLASSEN"
+script = SubResource("GDScript_s5ovt")
