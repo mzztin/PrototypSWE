@@ -18,9 +18,8 @@ func _physics_process(delta):
 
 func _process(delta):
 	handle_escape()
-	handle_map_input()
-	handle_map()
 	update_developer_information()
+	handle_fov()
 	
 func player_movement(delta):
 	if get_node("/root/PlayerVariables").immobile == true:
@@ -90,15 +89,12 @@ func play_animation(type: AnimationType):
 		else:
 			anim.play("down_idle")
 
-func handle_map_input():
-	if Input.is_action_just_pressed("map"):
-		minimap = !minimap
-
-func handle_map():
-	if !minimap:
-		$Camera2D.make_current()
-		
 func update_developer_information():
 	var monitor_value = Callable(self, "get_monitor_value")
 	var format_string = "X: %s\nY: %s"
 	$Camera2D/DeveloperInformation.text = format_string % [position.x, position.y]
+
+func handle_fov():
+	PlayerVariables.field_of_view += 0.01
+	var field_of_view = PlayerVariables.field_of_view
+	$Camera2D.zoom = Vector2(1 * field_of_view, 1 * field_of_view)
