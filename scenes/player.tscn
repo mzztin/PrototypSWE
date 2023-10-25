@@ -194,6 +194,11 @@ animations = [{
 "name": &"down_walk",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"invisible",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wter6")
@@ -295,8 +300,7 @@ shape = SubResource("RectangleShape2D_wi8pv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -8)
 sprite_frames = SubResource("SpriteFrames_ra4vn")
-animation = &"up_idle"
-frame_progress = 0.0391348
+animation = &"invisible"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -3)

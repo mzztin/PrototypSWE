@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var camera = $Camera2D
 
-var target_position = Vector2(0, 0)
+var target_position = Vector2(40, 40)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,3 +12,6 @@ func _ready():
 func _process(delta):
 	if target_position:
 		position = position.lerp(target_position, 1)
+
+func handle_map_input():
+	if 

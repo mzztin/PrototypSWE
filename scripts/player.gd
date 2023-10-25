@@ -19,9 +19,10 @@ func _process(delta):
 	handle_escape()
 	update_developer_information()
 	handle_fov()
+	handle_immobile()
 	
 func player_movement(delta):
-	if get_node("/root/PlayerVariables").immobile == true:
+	if PlayerVariables.immobile:
 		return
 	
 	if Input.is_action_pressed("right"):
@@ -59,7 +60,7 @@ func handle_escape():
 func play_animation(type: AnimationType):
 	var dir: Direction = current_dir
 	var anim: AnimatedSprite2D = $AnimatedSprite2D
-		
+	
 	if dir == Direction.RIGHT:
 		anim.flip_h = false # Flip H => Horizontal den Charachter rotieren
 		if type == AnimationType.WALK:
@@ -96,3 +97,8 @@ func update_developer_information():
 func handle_fov():
 	var field_of_view = PlayerVariables.field_of_view
 	$Camera2D.zoom = Vector2(1 * field_of_view, 1 * field_of_view)
+
+func handle_immobile():
+	if PlayerVariables.immobile == true:
+		$AnimatedSprite2D.play("invisible")
+		return	
