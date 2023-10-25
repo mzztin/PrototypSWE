@@ -1,6 +1,8 @@
 extends Node
 
-var field_of_view = 1
+var speed = 100
+
+var field_of_view = 1.5 # Zoom Niveau
 
 var current_level = 0
 var hp: int = 100

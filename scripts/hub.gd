@@ -16,7 +16,12 @@ func handle_map_input():
 		PlayerVariables.map_option = !PlayerVariables.map_option
 	
 func handle_camera():
+	
+	#PlayerVariables.field_of_view += 0.01
+	
 	if PlayerVariables.map_option:	
 		$MapView/Camera2D.make_current()
+		PlayerVariables.immobile = true
 	else:
 		$Player/Camera2D.make_current()
+		PlayerVariables.immobile = false

@@ -4,7 +4,6 @@ extends CharacterBody2D
 enum Direction { UP, DOWN, RIGHT, LEFT, NONE }
 enum AnimationType { IDLE, WALK }
 
-const SPEED = 100
 var current_dir: Direction = Direction.NONE
 var minimap: bool = false
 
@@ -27,23 +26,23 @@ func player_movement(delta):
 	
 	if Input.is_action_pressed("right"):
 		current_dir = Direction.RIGHT
-		velocity.x = SPEED
+		velocity.x = PlayerVariables.speed
 		velocity.y = 0
 		play_animation(AnimationType.WALK)
 	elif Input.is_action_pressed("left"):
 		current_dir = Direction.LEFT
-		velocity.x = -SPEED
+		velocity.x = -PlayerVariables.speed
 		velocity.y = 0
 		play_animation(AnimationType.WALK)
 	elif Input.is_action_pressed("up"):
 		current_dir = Direction.UP
 		velocity.x = 0
-		velocity.y = -SPEED
+		velocity.y = -PlayerVariables.speed
 		play_animation(AnimationType.WALK)
 	elif Input.is_action_pressed("down"):
 		current_dir = Direction.DOWN
 		velocity.x = 0
-		velocity.y = SPEED
+		velocity.y = PlayerVariables.speed
 		play_animation(AnimationType.WALK)
 	else:
 		velocity.x = 0
@@ -91,10 +90,9 @@ func play_animation(type: AnimationType):
 
 func update_developer_information():
 	var monitor_value = Callable(self, "get_monitor_value")
-	var format_string = "X: %s\nY: %s"
-	$Camera2D/DeveloperInformation.text = format_string % [position.x, position.y]
+	var format_string = "X: %.*f\nY: %.*f"
+	$Camera2D/DeveloperInformation.text = format_string % [2, position.x, 2, position.y]
 
 func handle_fov():
-	PlayerVariables.field_of_view += 0.01
 	var field_of_view = PlayerVariables.field_of_view
 	$Camera2D.zoom = Vector2(1 * field_of_view, 1 * field_of_view)
